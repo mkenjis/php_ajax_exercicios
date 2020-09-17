@@ -1,0 +1,31 @@
+<html>
+<head>
+  <link href="css/estilo.css" rel="stylesheet">
+</head>
+
+<body>
+  <button id="botao">Carregar</button>
+  <div id="curso"></div>
+
+  <script src="../jquery.js"></script>
+  <script>
+  $('button#botao').click(function() {
+    carregarDados();
+  });
+
+  function carregarDados() {
+    $.getJSON('gerar_json.php', function(data) {
+      var elemento;
+      elemento = "<ul>";
+      $.each(data, function(i, valor) {
+        elemento += "<li class=nome>" + valor.nomeproduto + "</li>";
+        elemento += "<li class=preco>" + valor.precounitario + "</li>";
+      });
+      elemento += "</ul>";
+
+      $('div#curso').html(elemento);
+    });
+  }
+  </script>
+</body>
+</html>

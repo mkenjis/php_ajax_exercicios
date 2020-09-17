@@ -1,0 +1,25 @@
+<html>
+<head>
+  <link href="css/estilo.css" rel="stylesheet">
+  <script src="../jquery.js"></script>
+
+  <script>
+    function retornaProdutos(data) {
+      var elemento;
+      elemento = "<ul>";
+      $.each(data, function(i, valor) {
+        elemento += "<li class=nome>" + valor.nomeproduto + "</li>"; 
+        elemento += "<li class=preco>" + valor.precounitario + "</li>";
+      });
+      elemento += "</ul>";
+
+      $('div#curso').html(elemento);
+    };
+  </script>
+</head>
+
+<body>
+  <div id="curso"></div>
+  <script src="http://192.168.0.101/ajax/u7/gerar_json.php?callback=retornaProdutos"></script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<html>
+<head>
+  <script>
+    var ajax = new XMLHttpRequest();
+    ajax.open('GET','dados.txt',true);  // ,false);
+    ajax.send();
+    ajax.onreadystatechange = function() {
+      if (ajax.readyState == 2) {
+        console.log("Pedido carga");
+      }
+      if (ajax.readyState == 3) {
+        console.log("Carregando");
+      }
+      if (ajax.readyState == 4) {
+        console.log("Carga finalizada");
+      }
+    }
+  </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

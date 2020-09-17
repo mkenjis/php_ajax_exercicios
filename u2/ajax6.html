@@ -1,0 +1,43 @@
+<html>
+<head>
+  <script>
+    var ajax;
+    if (window.XMLHttpRequest) {
+      ajax = new XMLHttpRequest();
+    } else {
+      ajax = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+
+    ajax.open('GET','dados.txt',true);  // ,false);
+    ajax.send();
+    ajax.onreadystatechange = function() {
+      if (ajax.status == 200) {
+        if (ajax.readyState == 2) {
+          console.log("Pedido carga");
+        }
+        if (ajax.readyState == 3) {
+          console.log("Carregando");
+        }
+        if (ajax.readyState == 4) {
+          console.log("Carga finalizada");
+          console.log(ajax.responseText);
+
+          var elemento = document.getElementById('dinamico');
+          elemento.innerHTML = ajax.responseText;
+
+          var titulo = document.getElementsByTagName('h1');
+          titulo[0].innerHTML = ajax.responseText;
+        }
+      } else {
+        console.log("Erro na carga");
+      }
+    }
+  </script>
+</head>
+
+<body>
+  <div id="dinamico"></div>
+  <h1></h1>
+</body>
+
+</html>

@@ -1,0 +1,30 @@
+<html>
+<head>
+  <style>
+    .curso { color: #F00; }
+  </style>
+</head>
+
+<body>
+  <div id="curso"></div>
+  <div class="curso"></div>
+
+  <script src="../jquery.js"></script>
+  <script>
+    $.ajax({
+      url:'dados.php'
+    }).then(sucesso,falha);
+
+    function sucesso(valor) {
+      $('div#curso').html(valor);
+      $('div.curso').html(valor);
+    }
+
+    function falha() {
+      $('div#curso').html("Falha de carregamento");
+      $('div.curso').html("Falha de carregamento");
+    }
+
+  </script>
+</body>
+</html>

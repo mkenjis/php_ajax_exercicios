@@ -1,0 +1,44 @@
+<html>
+<head>
+  <style>
+    .curso { color: #F00; }
+  </style>
+  <link href="css/estilo.css" rel="stylesheet">
+
+    <script src="../jquery.js"></script>
+
+  <script>
+
+  function carregarDados() {
+    $.ajax({
+      url:'produtos.xml'
+    }).then(sucesso,falha);
+
+    function sucesso(valor) {
+      var elemento;
+      elemento = "<ul>";
+      $(valor).find('produto').each(function() {
+        var nome = $(this).find('nomeproduto').text();
+        var preco = $(this).find('precounitario').text();
+        elemento += "<li class=nome>" + nome + "</li>";
+        elemento += "<li class=preco>" + preco + "</li>";
+      });
+      elemento += "</ul>";
+
+      $('div#curso').html(elemento);
+    }
+
+    function falha() {
+    }
+  }
+  </script>
+</head>
+
+<body>
+
+  <button type="button" onclick="carregarDados()" id="botao">Carregar</button>
+
+  <div id="curso"></div>
+  <div class="curso"></div>
+</body>
+</html>

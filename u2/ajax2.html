@@ -1,0 +1,17 @@
+<html>
+<head>
+  <script>
+    var ajax = new XMLHttpRequest();
+    ajax.open('GET','dados.txt',true);  // ,false);
+    ajax.send();
+    ajax.onreadystatechange = function() {
+      console.log(ajax.readyState);
+    }
+  </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

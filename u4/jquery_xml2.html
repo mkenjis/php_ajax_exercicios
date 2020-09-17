@@ -1,0 +1,27 @@
+<html>
+<head>
+  <style>
+    .curso { color: #F00; }
+  </style>
+</head>
+
+<body>
+  <div id="curso"></div>
+  <div class="curso"></div>
+
+  <script src="../jquery.js"></script>
+  <script>
+    $.ajax({
+      url:'produtos.xml'
+    }).then(sucesso,falha);
+
+    function sucesso(valor) {
+      console.log($(valor).find('produto').find('nomeproduto').text());
+    }
+
+    function falha() {
+    }
+
+  </script>
+</body>
+</html>
